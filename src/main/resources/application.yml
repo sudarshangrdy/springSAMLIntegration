@@ -6,4 +6,22 @@ logging:
     root: INFO
     org.springframework.web: TRACE
     org.springframework.security: TRACE
+    org.springframework.security.saml: TRACE
+    org.opensaml.xmlsec: TRACE
 
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          carsonline:
+            signing:
+              credentials:
+                - private-key-location: "classpath:credentials/private.key"
+                  certificate-location: "classpath:credentials/public.crt"
+            decryption:
+              credentials:
+                - private-key-location: "classpath:credentials/private.key"
+                  certificate-location: "classpath:credentials/public.crt"
+            identityprovider:
+              metadata-uri: "classpath:okta-metadata.xml"
